@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaisVacina — Meus Dados</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="topo-governo">
+        <div class="logos-publicos">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Gov.br_logo.svg/320px-Gov.br_logo.svg.png" alt="Governo Federal">
+        </div>
+        <div class="logo-principal">
+            <a href="app.html" style="text-decoration:none;"><h1>Mais<span>Vacina</span></h1></a>
+        </div>
+        <div class="usuario-info" id="usuario-info">
+            <span>Olá, <strong id="nome-usuario">Paciente</strong></span>
+            <button id="btn-logout" class="btn-logout">Sair</button>
+        </div>
+    </header>
+
+    <nav class="nav-interna">
+        <a href="app.html">🏠 Início</a>
+        <a href="perfil.html" class="ativo">👤 Meus Dados</a>
+        <a href="vacinas.html">💉 Minhas Vacinas</a>
+        <a href="autenticacao.html">🩺 Área Profissional</a>
+        <a href="sobre.html">ℹ️ Sobre</a>
+    </nav>
+
+    <div id="app-main">
+        <main>
+            <section class="card">
+                <h2>👤 Meus Dados</h2>
+                <p>Visualize e edite suas informações pessoais.</p>
+                <div id="perfil-view"></div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="rodape-parceiros">
+        <p class="nota-rodape">Projeto demonstrativo. As marcas pertencem aos seus respectivos proprietários.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="pages.js"></script>
+</body>
+</html>

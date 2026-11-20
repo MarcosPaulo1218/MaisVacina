@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaisVacina — Minha Carteira</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="topo-governo">
+        <div class="logos-publicos">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Gov.br_logo.svg/320px-Gov.br_logo.svg.png" alt="Governo Federal">
+        </div>
+        <div class="logo-principal">
+            <a href="app.html" style="text-decoration:none;"><h1>Mais<span>Vacina</span></h1></a>
+        </div>
+        <div class="usuario-info" id="usuario-info">
+            <span>Olá, <strong id="nome-usuario">Paciente</strong></span>
+            <button id="btn-logout" class="btn-logout">Sair</button>
+        </div>
+    </header>
+
+    <!-- NAVEGAÇÃO INTERNA -->
+    <nav class="nav-interna">
+        <a href="app.html" class="ativo">🏠 Início</a>
+        <a href="perfil.html">👤 Meus Dados</a>
+        <a href="vacinas.html">💉 Minhas Vacinas</a>
+        <a href="autenticacao.html">🩺 Área Profissional</a>
+        <a href="sobre.html">ℹ️ Sobre</a>
+    </nav>
+
+    <div id="app-main">
+        <main>
+
+            <!-- BOAS-VINDAS -->
+            <section class="card card-destaque">
+                <h2>👋 Bem-vindo(a) à sua Carteira Digital</h2>
+                <p>Aqui você pode gerenciar seus dados, registrar vacinas e autenticar sua carteira com profissionais de saúde.</p>
+            </section>
+
+            <!-- RESUMO DO PERFIL -->
+            <section class="card">
+                <h2>👤 Resumo do Perfil</h2>
+                <div id="perfil-view"></div>
+            </section>
+
+            <!-- RESUMO DE VACINAS -->
+            <section class="card">
+                <h2>💉 Últimas Vacinas</h2>
+                <div id="lista-vacinas">
+                    <p class="vazio">Nenhuma vacina registrada ainda.</p>
+                </div>
+                <a href="vacinas.html" class="btn-secundario" style="display:inline-block;text-decoration:none;margin-top:14px;">Ver todas / Adicionar</a>
+            </section>
+
+            <!-- STATUS DE AUTENTICAÇÃO -->
+            <section class="card">
+                <h2>🩺 Status da Carteira</h2>
+                <div id="status-autenticacao" class="status-pendente">
+                    Status da carteira: <strong>Aguardando autenticação</strong>
+                </div>
+                <a href="autenticacao.html" class="btn-secundario" style="display:inline-block;text-decoration:none;margin-top:14px;">Ir para Área Profissional</a>
+            </section>
+
+        </main>
+    </div>
+
+    <footer class="rodape-parceiros">
+        <h4>Hospitais e Redes Parceiras</h4>
+        <div class="logos-parceiros">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Albert_Einstein_logo.svg/200px-Albert_Einstein_logo.svg.png" alt="Albert Einstein" onerror="this.style.display='none'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Hospital_S%C3%ADrio-Liban%C3%AAs_logo.svg/200px-Hospital_S%C3%ADrio-Liban%C3%AAs_logo.svg.png" alt="Sírio-Libanês" onerror="this.style.display='none'">
+        </div>
+        <p class="nota-rodape">Projeto demonstrativo. As marcas pertencem aos seus respectivos proprietários.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="pages.js"></script>
+</body>
+</html>

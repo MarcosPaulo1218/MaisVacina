@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaisVacina</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- TOPO -->
+    <header class="topo-governo">
+        <div class="logos-publicos">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Gov.br_logo.svg/320px-Gov.br_logo.svg.png" alt="Governo Federal">
+            <img src="https://vectorseek.com/wp-content/uploads/2023/06/Ministerio-da-Saude-Logo-Vector.svg-.png" alt="Ministério da Saúde" onerror="this.style.display='none'">
+            <img src="https://vectorseek.com/wp-content/uploads/2023/06/ANVISA-Logo-Vector.svg-.png" alt="ANVISA" onerror="this.style.display='none'">
+        </div>
+        <div class="logo-principal">
+            <h1>Mais<span>Vacina</span></h1>
+        </div>
+        <div class="usuario-info" id="usuario-info" style="display:none;">
+            <span>Olá, <strong id="nome-usuario">Paciente</strong></span>
+            <button id="btn-logout" class="btn-logout">Sair</button>
+        </div>
+    </header>
+
+    <!-- TELA DE LOGIN / CADASTRO / RECUPERAÇÃO -->
+    <div id="tela-login" class="container-login" style="display:none;">
+        <div class="card">
+            <div class="abas-login">
+                <button class="aba-login ativa" data-aba="login">Entrar</button>
+                <button class="aba-login" data-aba="cadastro">Criar Conta</button>
+            </div>
+
+            <!-- Formulário de LOGIN -->
+            <form id="form-login" class="form-aba ativa">
+                <h2>Acessar minha carteira</h2>
+                <p>Informe seu CPF e senha para entrar.</p>
+                <div class="campo">
+                    <label for="login-cpf">CPF *</label>
+                    <input type="text" id="login-cpf" required placeholder="000.000.000-00" maxlength="14" inputmode="numeric">
+                </div>
+                <div class="campo">
+                    <label for="login-senha">Senha *</label>
+                    <input type="password" id="login-senha" required placeholder="Sua senha">
+                </div>
+                <button type="submit" class="btn-primario">Entrar</button>
+                <!-- NOVO: link de esqueci a senha -->
+                <a href="#" id="link-esqueci-senha" class="link-auxiliar">Esqueci minha senha</a>
+                <p id="msg-login" class="mensagem"></p>
+            </form>
+
+            <!-- Formulário de CADASTRO -->
+            <form id="form-cadastro-conta" class="form-aba">
+                <h2>Criar nova conta</h2>
+                <p>Preencha seus dados para criar sua carteira digital.</p>
+                <div class="grid-2">
+                    <div class="campo">
+                        <label for="cad-cpf">CPF *</label>
+                        <input type="text" id="cad-cpf" required placeholder="000.000.000-00" maxlength="14" inputmode="numeric">
+                    </div>
+                    <div class="campo">
+                        <label for="cad-nome">Nome completo *</label>
+                        <input type="text" id="cad-nome" required placeholder="Seu nome completo">
+                    </div>
+                    <!-- NOVO: campo de e-mail no cadastro -->
+                    <div class="campo">
+                        <label for="cad-email">E-mail *</label>
+                        <input type="email" id="cad-email" required placeholder="seu@email.com">
+                    </div>
+                    <div class="campo">
+                        <label for="cad-sexo">Sexo *</label>
+                        <select id="cad-sexo" required>
+                            <option value="">Selecione...</option>
+                            <option value="Feminino">Feminino</option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Outro">Outro</option>
+                            <option value="Prefiro não informar">Prefiro não informar</option>
+                        </select>
+                    </div>
+                    <div class="campo">
+                        <label for="cad-nascimento">Data de nascimento *</label>
+                        <input type="date" id="cad-nascimento" required>
+                    </div>
+                    <div class="campo">
+                        <label for="cad-telefone">Número para contato *</label>
+                        <input type="tel" id="cad-telefone" required placeholder="(00) 00000-0000">
+                    </div>
+                    <div class="campo" style="grid-column:1/-1;">
+                        <label for="cad-endereco">Endereço completo *</label>
+                        <input type="text" id="cad-endereco" required placeholder="Rua, número, bairro, cidade – UF">
+                    </div>
+                    <div class="campo">
+                        <label for="cad-senha">Senha *</label>
+                        <input type="password" id="cad-senha" required placeholder="Mínimo 6 caracteres" minlength="6">
+                    </div>
+                    <div class="campo">
+                        <label for="cad-confirmar">Confirmar senha *</label>
+                        <input type="password" id="cad-confirmar" required placeholder="Repita a senha" minlength="6">
+                    </div>
+                </div>
+                <button type="submit" class="btn-primario">Criar Conta</button>
+                <p id="msg-cadastro-conta" class="mensagem"></p>
+            </form>
+
+            <!-- NOVO: Formulário de RECUPERAÇÃO DE SENHA -->
+            <form id="form-recuperar" class="form-aba">
+                <h2>Recuperar senha</h2>
+                <p>Informe seu CPF e o e-mail cadastrado para definir uma nova senha.</p>
+                <div class="campo">
+                    <label for="rec-cpf">CPF *</label>
+                    <input type="text" id="rec-cpf" required placeholder="000.000.000-00" maxlength="14" inputmode="numeric">
+                </div>
+                <div class="campo">
+                    <label for="rec-email">E-mail cadastrado *</label>
+                    <input type="email" id="rec-email" required placeholder="seu@email.com">
+                </div>
+                <div class="grid-2">
+                    <div class="campo">
+                        <label for="rec-nova-senha">Nova senha *</label>
+                        <input type="password" id="rec-nova-senha" required placeholder="Mínimo 6 caracteres" minlength="6">
+                    </div>
+                    <div class="campo">
+                        <label for="rec-confirmar">Confirmar nova senha *</label>
+                        <input type="password" id="rec-confirmar" required placeholder="Repita a nova senha" minlength="6">
+                    </div>
+                </div>
+                <button type="submit" class="btn-primario">Redefinir senha</button>
+                <a href="#" id="link-voltar-login" class="link-auxiliar">Voltar ao login</a>
+                <p id="msg-recuperar" class="mensagem"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- APP PRINCIPAL (só aparece após login) -->
+    <div id="app-main" style="display:none;">
+        <main>
+
+            <section class="card" id="secao-perfil">
+                <h2>👤 Meus Dados</h2>
+                <div id="perfil-view"></div>
+            </section>
+
+            <section class="card" id="secao-vacinas">
+                <h2>💉 Minhas Vacinas</h2>
+                <p>Registre aqui as vacinas que você já tomou.</p>
+
+                <form id="form-vacina">
+                    <div class="grid-2">
+                        <div class="campo">
+                            <label for="vacina-nome">Vacina *</label>
+                            <input type="text" id="vacina-nome" required placeholder="Ex.: COVID-19, Gripe, Hepatite B...">
+                        </div>
+                        <div class="campo">
+                            <label for="vacina-data">Data da vacinação *</label>
+                            <input type="date" id="vacina-data" required>
+                        </div>
+                        <div class="campo">
+                            <label for="vacina-hora">Horário *</label>
+                            <input type="time" id="vacina-hora" required>
+                        </div>
+                        <div class="campo">
+                            <label for="vacina-local">Local da vacinação *</label>
+                            <input type="text" id="vacina-local" required placeholder="Hospital, UBS, farmácia...">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primario">Adicionar Vacina</button>
+                </form>
+
+                <h3>Histórico</h3>
+                <div id="lista-vacinas">
+                    <p class="vazio">Nenhuma vacina registrada ainda.</p>
+                </div>
+            </section>
+
+            <section class="card" id="secao-autenticacao">
+                <h2>🩺 Área do Profissional de Saúde</h2>
+                <p>Médicos (CRM) e farmacêuticos (CRF) podem autenticar a carteira do paciente.</p>
+
+                <div id="status-autenticacao" class="status-pendente">
+                    Status da carteira: <strong>Aguardando autenticação</strong>
+                </div>
+
+                <form id="form-autenticacao">
+                    <div class="grid-2">
+                        <div class="campo">
+                            <label for="tipo-profissional">Tipo de profissional *</label>
+                            <select id="tipo-profissional" required>
+                                <option value="">Selecione...</option>
+                                <option value="Médico(a)">Médico(a) — CRM</option>
+                                <option value="Farmacêutico(a)">Farmacêutico(a) — CRF</option>
+                            </select>
+                        </div>
+                        <div class="campo">
+                            <label for="registro-profissional">Número do CRM / CRF *</label>
+                            <input type="text" id="registro-profissional" required placeholder="Ex.: CRM-SP 123456">
+                        </div>
+                    </div>
+                    <div class="campo">
+                        <label for="senha-profissional">Senha de acesso *</label>
+                        <input type="password" id="senha-profissional" required placeholder="Senha simulada (qualquer valor)">
+                    </div>
+                    <button type="submit" class="btn-secundario">Autenticar Carteira</button>
+                </form>
+                <p id="msg-autenticacao" class="mensagem"></p>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- RODAPÉ -->
+    <footer class="rodape-parceiros">
+        <h4>Hospitais e Redes Parceiras</h4>
+        <div class="logos-parceiros">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Albert_Einstein_logo.svg/200px-Albert_Einstein_logo.svg.png" alt="Albert Einstein" onerror="this.style.display='none'">
+            <span class="placeholder-logo">Hospital Osvaldo Cruz</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Hospital_S%C3%ADrio-Liban%C3%AAs_logo.svg/200px-Hospital_S%C3%ADrio-Liban%C3%AAs_logo.svg.png" alt="Sírio-Libanês" onerror="this.style.display='none'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Logo_do_Hospital_9_de_Julho.jpg/200px-Logo_do_Hospital_9_de_Julho.jpg" alt="Hospital 9 de Julho" onerror="this.style.display='none'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/RD_Sa%C3%BAde_logo.svg/200px-RD_Sa%C3%BAde_logo.svg.png" alt="RD Saúde" onerror="this.style.display='none'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Drogaria_S%C3%A3o_Paulo_logo.svg/200px-Drogaria_S%C3%A3o_Paulo_logo.svg.png" alt="Drogaria São Paulo" onerror="this.style.display='none'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Pague_Menos_logo.svg/200px-Pague_Menos_logo.svg.png" alt="Pague Menos" onerror="this.style.display='none'">
+            <img src="https://logodownload.org/wp-content/uploads/2018/01/ultrafarma-logo.png" alt="Ultrafarma" onerror="this.style.display='none'">
+        </div>
+        <p class="nota-rodape">Projeto demonstrativo. As marcas pertencem aos seus respectivos proprietários.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
